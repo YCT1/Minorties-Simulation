@@ -45,7 +45,13 @@ class Men:
         self.race = race
 
 scene = []
+
 randomit = random
+ratio1 = 1
+ratio2 = 1
+ratioall = ratio1 + ratio2
+
+
 while True:
     txt = input("Enter Your Command: ")
     command = checkCommand(txt)
@@ -76,11 +82,11 @@ while True:
         while i < len(scene)-1:
             j = 1
             while j < len(scene[0])-1:
-                a = randomit.randint(0, 5)
-                if a < 3:
+                a = randomit.randint(1, ratioall)
+                if a <= ratio1:
                     newman = Men(False, "o")
                     scene[i][j] = newman
-                if a >= 3:
+                if a > ratio1:
                     newman = Men(False, "Y")
                     scene[i][j] = newman
                 j += 1
@@ -100,6 +106,12 @@ while True:
                 j += 1
             print(row)
             i += 1
+
+    if command == "ratio":
+        ratio1 = int(commandNum[0])
+        ratio2 = int(commandNum[1])
+        ratioall = ratio1 + ratio2
+
     if command == "run":
         i = 0
         while i < int(commandNum[0]):
